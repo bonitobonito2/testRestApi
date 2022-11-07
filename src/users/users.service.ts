@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 
 import { Repository } from 'typeorm';
+import UserCreateDto from './dtos/users.dto';
 
 import User from './user.entity';
 
@@ -12,13 +13,14 @@ export class UsersService {
     private readonly tasksRepository: Repository<User>,
   ) {}
 
-  insertData(){
+  insertData(userCreateDto : UserCreateDto): Promise<UserCreateDto>{
+    const {userName,email,password} = userCreateDto
     const user = this.tasksRepository.create({
-        userName : 'zaal',
-        email : 'zal@gmail.com',
-        password: 'password'
+        userName : userName,
+        email : email,
+        password: password
 
     })
-    this.tasksRepository.save(user)
+    return this.tasksRepository.save(user)
   }
 }
