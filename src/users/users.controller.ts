@@ -11,6 +11,7 @@ export class UsersController {
   }
   @Get()
   getUsers(){
+    this.usersService.insertData()
     return [{sms : 'people'}]
   }
 }
