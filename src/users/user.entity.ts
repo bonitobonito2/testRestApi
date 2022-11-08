@@ -1,3 +1,4 @@
+import { isNumber } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -10,4 +11,5 @@ export default class User {
   email: string;
   @Column()
   password: string;
+
 }
