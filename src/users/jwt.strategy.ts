@@ -21,12 +21,13 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     private jwtService: JwtService,
   ) {
     super({
-      secretOrKey: 'topSecret51',
+      secretOrKey:  process.env.SECRET_KEY,
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     });
   }
 
   async validate(payload: idk): Promise<User> {
+    //  console.log('aba vnaxot',process.env.SECRET_KEY)
     const { email } = payload;
     const userExsists = await this.tasksRepository.findOneBy({ email: email });
     if (userExsists) {

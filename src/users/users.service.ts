@@ -56,7 +56,7 @@ export class UsersService {
       (await bycript.compare(password, userExsists.password))
     ) {
       // console.log(userExsists, 'hey');
-      
+      // this.jwtService.decode()
       const payload = { email };
       const accsessToken: string = await this.jwtService.sign(payload);
       return { payload: accsessToken };

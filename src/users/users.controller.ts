@@ -1,4 +1,4 @@
-import { Body, Controller, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { Post } from '@nestjs/common';
 import ReturnDto from './dtos/return.dto';
 import { AuthGuard } from '@nestjs/passport';
@@ -21,9 +21,9 @@ export class UsersController {
     return this.usersService.Login(user);
   }
 
-  @Post('/test')
+  @Get('/test')
   @UseGuards(AuthGuard())
   test(@Req() req) {
-    console.log(req);
+    // console.log(req);
   }
 }
